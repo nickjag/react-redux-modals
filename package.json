@@ -1,0 +1,11 @@
+{
+  "name": "react-redux-modals",
+  "version": "1.0.0",
+  "description": "Simple component-based modals that support auto-layering.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Jagodzinski",
+  "license": "ISC"
+}
