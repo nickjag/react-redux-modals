@@ -45,7 +45,6 @@ const Container = styled.div`
   outline: 0;
   display: inline-block;
   cursor: default;
-  background: #fff;
 
   @media (min-width: 768px) {
     position: relative;
@@ -115,13 +114,13 @@ export default class Modal extends Component {
   render () {
     return (
         <div>
-          <Wrapper onClick={this.onWrapperClick} zIndex={wrapperIndex + this.props.level} >
-            <Container onClick={this.onDialogClick}>
+          <Wrapper className="modal-wrapper" onClick={this.onWrapperClick} zIndex={wrapperIndex + this.props.level} >
+            <Container className="modal-container" onClick={this.onDialogClick}>
               {this.props.children}
               {this.props.handleClose && <Close onClick={this.onCloseClick} />}
             </Container>
           </Wrapper>
-          <Overlay zIndex={overlayIndex + this.props.level} />
+          <Overlay className="modal-overlay" zIndex={overlayIndex + this.props.level} />
         </div>
     );
   }

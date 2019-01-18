@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
 import './app.css';
+import Button from './button';
 import { actions } from '../src/';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        <button onClick={() => this.props.showModal('MODAL_ALERT')}>test</button>
-        </header>
+      <div className="app">
+        <h1>react-redux-modals</h1>
+        <article>
+          <p><Button onClick={() => this.props.showModal('MODAL_AGREE')}>Simple agreement</Button></p>
+          <p><Button onClick={() => this.props.showModal('MODAL_LAYER_BOTTOM')}>Multiple modals</Button></p>
+          <p><Button onClick={() => this.props.showModal('MODAL_AGREE')}>Must complete me</Button></p>
+          <p><Button onClick={() => this.props.showModal('MODAL_AGREE')}>Pass input data</Button></p>
+        </article>
       </div>
     );
   }

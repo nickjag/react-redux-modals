@@ -1,13 +1,25 @@
 
+.modal-container {
+  max-width: 600px;
+}
 .modal-body {
   position: relative;
 	display: inline-block;
-  padding: 32px 16px;
+  padding: 20px;
   background: #fff;
+  border-radius: 4px;
 }
-.modal-body h2 {
+.modal-body h3 {
   display: block;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
   text-align: left;
+  font-weight: 500;
 }
-
+.modal-body p {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 15px;
+  font-weight: 400;
+}
+.modal-body .button-bar {
+  text-align: right;
+}
