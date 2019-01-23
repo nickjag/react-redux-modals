@@ -10,10 +10,10 @@ class ModalLayerTop extends Component {
   constructor(props) {
     super(props);
     
-    this.handleCancel = this.handleCancel.bind(this);;
+    this.handleClose = this.handleClose.bind(this);
   }
   
-  handleCancel() {
+  handleClose() {
     this.props.hideModal('MODAL_LAYER_TOP');
   }
 
@@ -21,16 +21,15 @@ class ModalLayerTop extends Component {
 
     return (
       <Modal 
-        level={this.props.level}
-        handleClose={false} 
-        handleEscape={this.handleCancel}>
-
-        <div className="modal-body" style={{top: "-25px", left: "-25px"}}>
+        config={this.props.modalConfig}
+        handleEscape={this.handleClose}>
+        
+        <div className="modal-body" style={{top: "-50px", left: "-50px"}}>
           <h3>Top Layer</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget velit nulla. Aenean ultrices elementum dapibus.</p>
           <div className="button-bar">
-            <Button componentStyle="blue" onClick={() => this.props.showModal('MODAL_LAYER_MIND')}>What card am I thinking of?</Button>
-            <Button componentStyle="blue" onClick={this.handleCancel}>Close</Button>
+            <Button componentStyle="blue" onClick={this.props.resetModals}>Reset all</Button>
+            <Button componentStyle="blue" onClick={this.handleClose}>Close</Button>
           </div>
         </div>
 

@@ -5,12 +5,8 @@ const initialState = {
   currentLevel: 1
 };
 
-// add 2 for each level because of both modal and modal overlay
-
 export default (state = initialState, action) => {
   switch (action.type) {
-
-    // if the modal already exists, it will be a problem.. need to not have duplicates...
     
     case SHOW:
       return {

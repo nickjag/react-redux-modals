@@ -1,10 +1,11 @@
 
 .modal-container {
   max-width: 600px;
+  padding: 20px;
 }
 .modal-body {
   position: relative;
-	display: inline-block;
+  display: inline-block;
   padding: 20px;
   background: #fff;
   border-radius: 4px;
@@ -22,4 +23,46 @@
 }
 .modal-body .button-bar {
   text-align: right;
+}
+.modal-body.formal {
+  padding: 0;
+}
+.modal-body.formal h3 {
+  padding: 20px 15px 0 15px;
+}
+.modal-body.formal .body-wrap {
+  padding: 15px;
+  border-top: solid 1px #ddd;
+  border-bottom: solid 1px #ddd;
+}
+.modal-body.formal p {
+  color: rgba(0, 0, 0, 0.75);
+}
+.modal-body.formal .button-bar {
+  padding: 15px;
+}
+.modal-body .close {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  opacity: .4;
+  background: transparent;
+  transition: background .2s ease;
+  border-radius: 50%;
+}
+.modal-body .close:hover {
+  background: #ddd;
+}
+@media (min-width: 768px) {
+  .modal-body {
+    min-width: 400px;
+  }
 }

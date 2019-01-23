@@ -4,8 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import { logger } from 'redux-logger';
 import rootReducer from './reducers';
-import './index.css';
 import App from './components/app';
+import './index.css';
 
 import * as modalTypes from './modal_types';
 import { ModalRoot } from './src/';
@@ -17,12 +17,12 @@ const store = createStore(
 
 const Root = () => {
   return (
-    <React.Fragment>
+    <div>
       <Provider store={store}>
         <App />
       </Provider>
-      <ModalRoot store={store} modalTypes={modalTypes} />
-    </React.Fragment>
+      <ModalRoot store={store} modalTypes={modalTypes} config={{ zIndex: 5 }} />
+    </div>
   );
 }
 

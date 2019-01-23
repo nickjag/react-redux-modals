@@ -28,7 +28,7 @@ class ModalRoot extends Component {
 		
 		ReactDOM.render(
 			<Provider store={this.props.store}>
-				<ModalFactory modalTypes={this.props.modalTypes} />
+				<ModalFactory modalTypes={this.props.modalTypes} config={this.props.config} />
 			</Provider>,
 			this.modalTarget
 		);

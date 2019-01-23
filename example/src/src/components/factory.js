@@ -11,7 +11,7 @@ class ModalFactory extends Component {
 
     let ModalComponent = this.props.modalTypes[type];
     
-    return <ModalComponent key={type} level={level} {...props} />;
+    return <ModalComponent key={type} modalConfig={ { ...this.props.config, level:level }} {...props} />;
   }
 
   render() {

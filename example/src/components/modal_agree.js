@@ -10,33 +10,31 @@ class ModalAgree extends Component {
   constructor(props) {
     super(props);
     
+    this.handleClose = this.handleClose.bind(this);
     this.handleDisagree = this.handleDisagree.bind(this);
     this.handleAgree = this.handleAgree.bind(this);
   }
     
-  handleCancel() {
+  handleClose() {
     this.props.hideModal('MODAL_AGREE');
   }
 
   handleDisagree() {
     alert('I disagree!');
-    this.props.hideModal('MODAL_AGREE');
+    this.handleClose();
   }
 
   handleAgree() {
     alert('I agree!');
-    this.props.hideModal('MODAL_AGREE');
+    this.handleClose();
   }
 
   render() {
 
-    // TODO: where is level coming from and is it working properly??
-
     return (
       <Modal 
-        level={this.props.level}
-        handleClose={false} 
-        handleEscape={this.handleCancel.bind(this)}>
+        config={this.props.modalConfig}
+        handleEscape={this.handleClose}>
 
         <div className="modal-body">
           <h3>Lorem ipsum dolor sit amet?</h3>

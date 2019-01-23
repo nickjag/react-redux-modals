@@ -26,7 +26,7 @@ const BaseButton = styled.button`
   }
 `;
 
-const Blue = styled(BaseButton)`
+const BlueButton = styled(BaseButton)`
   color: #2196f3;
   border: none;
 
@@ -37,7 +37,7 @@ const Blue = styled(BaseButton)`
 
 const buttonStyles = {
   default: BaseButton,
-  blue: Blue,
+  blue: BlueButton,
 };
 
 const Button = (props) => {

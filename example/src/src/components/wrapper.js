@@ -1,79 +1,61 @@
 import React, { Component } from 'react';
-import styled  from 'styled-components';
+import styled, { keyframes }  from 'styled-components';
 
-const overlayIndex = 4;
-const wrapperIndex = 5;
+const modalFadeIn = keyframes`
+  from {opacity: 0;}
+  to {opacity: 1;}
+`;
 
-const Overlay = styled.div`
+const AnimatedFixed = styled.div`
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: ${props => props.zIndex};
+  opacity: ${props => props.animate && props.fadeIn ? 0 : 1};
+  animation-name: ${props => props.animate && props.fadeIn ? modalFadeIn : "none"};
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(.8, -0.49, .36, 1);
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+`;
+
+const Overlay = styled(AnimatedFixed)`
   height: 100%;
   width: 100%;
   background-color: rgba(68, 68, 68, .8);
-  z-index: ${props => props.zIndex};
 `;
 
-const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+const Wrapper = styled(AnimatedFixed)`
   overflow: auto;
   text-align: center;
-  overflow-y: scroll;
   overflow-scrolling: touch;
   padding: 0;
-  z-index: ${props => props.zIndex};
-  
-  ${'' /* ${props => props.hasEscape && css`
-    cursor: pointer;
-  `} */}
+  animation-delay: .2s;
 `;
 
 const Container = styled.div`
-  position: absolute;
+  position: relative;
+  display: inline-block;
   width: auto;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   bottom: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
   outline: 0;
-  display: inline-block;
   cursor: default;
-
-  @media (min-width: 768px) {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-}
-`;
-
-const Close = styled.div`
-  display: block;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  background-image: url('/assets/img/icon-close-gray-round.svg');
-  background-size: 32px 32px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  cursor: pointer;
+  background: transparent;
 `;
 
 export default class Modal extends Component {
   constructor(props) {
 
     super(props);
-    this.onCloseClick = this.onCloseClick.bind(this);
     this.onWrapperClick = this.onWrapperClick.bind(this);
+    this.listenKeyboard = this.listenKeyboard.bind(this);
   }
 
   listenKeyboard(event) {
@@ -84,45 +66,40 @@ export default class Modal extends Component {
 
   componentDidMount () {
     if (this.props.handleEscape) {
-      window.addEventListener('keydown', this.listenKeyboard.bind(this), true);
+      window.addEventListener('keydown', this.listenKeyboard, true);
     }
   }
   
   componentWillUnmount () {
     if (this.props.handleEscape) {
-      window.removeEventListener('keydown', this.listenKeyboard.bind(this), true);
+      window.removeEventListener('keydown', this.listenKeyboard, true);
     }
   }
 
-  // prevent modal clicks from propagating to wrapper/escape clicks
-  onDialogClick(event) {
-    event.stopPropagation();
+  onContainerClick(e) {
+    e.stopPropagation();
   };
-
-  // check/handle escape (outside of modal) closing
+  
   onWrapperClick() {
     if (this.props.handleEscape) {
       this.props.handleEscape();
     }
   };
 
-  // handle closing the mdoal
-  onCloseClick() {
-    this.props.handleClose();
-  }
-
   render () {
+
+    const { config, animate=false, fadeIn=true } = this.props;
+
     return (
         <div>
-          <Wrapper className="modal-wrapper" onClick={this.onWrapperClick} zIndex={wrapperIndex + this.props.level} >
-            <Container className="modal-container" onClick={this.onDialogClick}>
+          <Wrapper className={`modal-wrapper ${animate && 'animate'}`} onClick={this.onWrapperClick} zIndex={parseInt(config.zIndex + config.level + 1)} animate={animate} fadeIn={fadeIn}>
+            <Container className="modal-container" onClick={this.onContainerClick}>
               {this.props.children}
-              {this.props.handleClose && <Close onClick={this.onCloseClick} />}
             </Container>
           </Wrapper>
-          <Overlay className="modal-overlay" zIndex={overlayIndex + this.props.level} />
+          <Overlay className={`modal-overlay ${animate && 'animate'}`} zIndex={parseInt(config.zIndex + config.level)} animate={animate} fadeIn={fadeIn} />
         </div>
     );
   }
-  
+
 }
