@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         activeModals: [
-          ...state.activeModals.filter((modal, index, array) => modal.type !== action.payload.type),
+          ...state.activeModals.filter(modal => modal.type !== action.payload.type),
           {
             ...action.payload,
             level: state.currentLevel + 2
