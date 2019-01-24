@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from './button';
-import { actions } from '../src/';
+import { actions } from 'react-redux-modals';
 import './app.css';
 
 class App extends Component {

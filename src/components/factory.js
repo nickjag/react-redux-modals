@@ -5,6 +5,8 @@ class ModalFactory extends Component {
   
   renderModalComponent({ type, level, props }) {
 
+    console.log('please do render', type);
+
     if (!this.props.modalTypes.hasOwnProperty(type)) {
       return;
     }
@@ -16,9 +18,13 @@ class ModalFactory extends Component {
 
   render() {
 
+    console.log('set 1', this.props);
+
     if (!this.props.activeModals || this.props.activeModals.length < 1) {
       return null;
     }
+
+    console.log('set 2');
 
     return (
       <div>
