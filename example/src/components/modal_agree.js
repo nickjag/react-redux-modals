@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Modal, { actions } from 'react-redux-modals';
 import Button from './button';
 import './modal.css';

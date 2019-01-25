@@ -13,7 +13,6 @@ class App extends Component {
   
   onSubmitData(data) {
     this.props.hideModal('MODAL_PROPS');
-    console.log(data);
 
     setTimeout(() => {
       alert("The parent received some data back...\n\n" + data);
@@ -49,7 +48,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    modals: state.modals
+  };
 }
 
 export default connect(mapStateToProps, actions)(App)

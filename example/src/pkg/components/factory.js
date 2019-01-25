@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 class ModalFactory extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    console.log('testing next props rr2', nextProps);
+	}
   
   renderModalComponent({ type, level, props }) {
 
@@ -12,23 +15,21 @@ class ModalFactory extends Component {
 
     let ModalComponent = this.props.modalTypes[type];
 
-    ModalComponent.contextTypes = {
-      store: PropTypes.object,
-    }
+    console.log('please do render asdf', type);
     
-    ModalComponent.childContextTypes = {
-      ...ModalComponent.childContextTypes,
-      store: PropTypes.object,
-    }
     
     return <ModalComponent key={type} modalConfig={ { ...this.props.config, level:level }} {...props} />;
   }
 
   render() {
 
+    console.log('set 1', this.props);
+
     if (!this.props.activeModals || this.props.activeModals.length < 1) {
       return null;
     }
+
+    console.log('set 2');
 
     return (
       <div>

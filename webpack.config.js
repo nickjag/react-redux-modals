@@ -5,24 +5,37 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
-        exclude: /(node_modules|bower_components|build)/,
+        exclude: /(node_modules|bower_components|build|example)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+        ],
+      },
     ]
   },
   externals: {
-    'react': 'commonjs react' 
+    'react': 'umd react',
+    'react-dom': 'react-dom',
+    'styled-components': 'styled-components',
   }
 };
