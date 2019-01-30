@@ -2,9 +2,9 @@
   "name": "react-redux-modals",
   "version": "1.0.0",
   "description": "Simple component-based modals that support auto-layering.",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf build",
+    "clean": "rimraf dist",
     "build": "npm run clean && webpack -p",
     "start": "webpack --watch --mode=development",
     "prepublish": "npm run build",
@@ -22,9 +22,6 @@
   ],
   "author": "Nick Jagodzinski <jag.nick@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "prop-types": "^15.6.2"
-  },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.0 || ^16.0.0",
     "react-dom": "^0.14.9 || ^15.0.0 || ^16.0.0",

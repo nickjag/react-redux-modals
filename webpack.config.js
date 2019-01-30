@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     libraryTarget: 'umd'
   },
@@ -12,7 +12,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
-        exclude: /(node_modules|bower_components|build|example)/,
+        exclude: /(node_modules|bower_components|dist|example)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -36,6 +36,8 @@ module.exports = {
   externals: {
     'react': 'umd react',
     'react-dom': 'react-dom',
-    'styled-components': 'styled-components',
+    'redux': 'redux',
+    'react-redux': 'react-redux',
+    'styled-components': 'styled-components'
   }
 };

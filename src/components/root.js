@@ -2,18 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import ModalFactory from './factory';
-import PropTypes from 'prop-types';
+// import { StoreContext } from '../store_context';
 
-ModalFactory.contextTypes = {
-  store: PropTypes.object,
-}
-
-ModalFactory.childContextTypes = {
-  ...ModalFactory.childContextTypes,
-  store: PropTypes.object,
-}
-
-export default class ModalRoot extends Component {
+class ModalRoot extends Component {
 
   constructor(props) {
     super(props);
@@ -50,3 +41,7 @@ export default class ModalRoot extends Component {
     return <noscript />;
   }
 }
+
+// ModalRoot.contextType = StoreContext;
+
+export default ModalRoot;
