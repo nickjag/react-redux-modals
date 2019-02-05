@@ -90,16 +90,17 @@ export default class Modal extends Component {
 
     const { config, animate=false, fadeIn=true } = this.props;
 
+    const zIndex = config.zIndex || 1000;
+
     return (
         <div>
-          <Wrapper className={`modal-wrapper ${animate && 'animate'}`} onClick={this.onWrapperClick} zIndex={parseInt(config.zIndex + config.level + 1)} animate={animate} fadeIn={fadeIn}>
+          <Wrapper className={`modal-wrapper ${animate && 'animate'}`} onClick={this.onWrapperClick} zIndex={parseInt(zIndex + config.level + 1)} animate={animate} fadeIn={fadeIn}>
             <Container className="modal-container" onClick={this.onContainerClick}>
               {this.props.children}
             </Container>
           </Wrapper>
-          <Overlay className={`modal-overlay ${animate && 'animate'}`} zIndex={parseInt(config.zIndex + config.level)} animate={animate} fadeIn={fadeIn} />
+          <Overlay className={`modal-overlay ${animate && 'animate'}`} zIndex={parseInt(zIndex + config.level)} animate={animate} fadeIn={fadeIn} />
         </div>
     );
   }
-
 }

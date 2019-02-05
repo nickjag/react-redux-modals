@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   externals: {
-    'react': 'umd react',
+    'react': 'react',
     'react-dom': 'react-dom',
     'redux': 'redux',
     'react-redux': 'react-redux',

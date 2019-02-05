@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions hide modal Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": "MODAL_TEST",
+    "type": "react-redux-modals/HIDE",
+  },
+]
+`;
+
+exports[`actions reset modals Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "type": "react-redux-modals/RESET",
+  },
+]
+`;
+
+exports[`actions show modal Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "modalProps": Object {
+        "onSubmit": [Function],
+      },
+      "modalType": "MODAL_TEST",
+    },
+    "type": "react-redux-modals/SHOW",
+  },
+]
+`;

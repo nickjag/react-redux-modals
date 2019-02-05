@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modal root initially renders 1`] = `
+<ModalRoot>
+  <noscript />
+</ModalRoot>
+`;
+
+exports[`modal root initially renders 2`] = `
+<div
+  class="full-modal modal"
+  data-testid="modal-root"
+/>
+`;

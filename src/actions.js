@@ -1,15 +1,15 @@
 import { SHOW, HIDE, RESET } from './action_types';
 
-export const showModal = (type, props) => ({
+export const showModal = (modalType, modalProps) => ({
   type: SHOW,
-  payload: { type, props }
+  payload: { modalType, modalProps }
 });
 
-export const hideModal = (type) => ({
+export const hideModal = (modalType) => ({
   type: HIDE,
-  payload: type
+  payload: modalType
 });
 
-export const resetModals = (type) => ({
+export const resetModals = () => ({
   type: RESET
 });

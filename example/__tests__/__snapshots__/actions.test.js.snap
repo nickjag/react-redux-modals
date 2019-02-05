@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions modalAgree Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "modalProps": undefined,
+      "modalType": "MODAL_AGREE",
+    },
+    "type": "react-redux-modals/SHOW",
+  },
+]
+`;
+
+exports[`actions modalProps Dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "modalProps": Object {
+        "onSubmit": [Function],
+      },
+      "modalType": "MODAL_PROPS",
+    },
+    "type": "react-redux-modals/SHOW",
+  },
+]
+`;

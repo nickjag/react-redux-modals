@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         activeModals: [
-          ...state.activeModals.filter(modal => modal.type !== action.payload.type),
+          ...state.activeModals.filter(modal => modal.modalType !== action.payload.modalType),
           {
             ...action.payload,
             level: state.currentLevel + 2
@@ -25,8 +25,8 @@ export default (state = initialState, action) => {
     case HIDE:
       return {
         ...state,
-        activeModals: state.activeModals.filter(modal => modal.type !== action.payload),
-        currentLevel: (state.activeModals.filter(modal => modal.type !== action.payload).length > 0 
+        activeModals: state.activeModals.filter(modal => modal.modalType !== action.payload),
+        currentLevel: (state.activeModals.filter(modal => modal.modalType !== action.payload).length > 0 
           ? state.currentLevel : 1)
       }
 

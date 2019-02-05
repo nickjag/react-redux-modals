@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modal factory initially renders without children 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ModalFactory)>
+    <ModalFactory
+      dispatch={[Function]}
+    />
+  </Connect(ModalFactory)>
+</Provider>
+`;
+
+exports[`modal factory renders with children after action 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ModalFactory)
+    modalTypes={
+      Object {
+        "MODAL_TEST": [Function],
+      }
+    }
+  >
+    <ModalFactory
+      activeModals={
+        Array [
+          Object {
+            "level": 3,
+            "modalProps": null,
+            "modalType": "MODAL_TEST",
+          },
+        ]
+      }
+      currentLevel={3}
+      dispatch={[Function]}
+      modalTypes={
+        Object {
+          "MODAL_TEST": [Function],
+        }
+      }
+    >
+      <div>
+        <MODAL_TEST
+          key="MODAL_TEST"
+          modalConfig={
+            Object {
+              "level": 3,
+            }
+          }
+        >
+          <div>
+            Modal Test!
+          </div>
+        </MODAL_TEST>
+      </div>
+    </ModalFactory>
+  </Connect(ModalFactory)>
+</Provider>
+`;

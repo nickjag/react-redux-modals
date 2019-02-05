@@ -15,13 +15,15 @@ const store = createStore(
   applyMiddleware(logger),
 );
 
+const ModalRootWithStore = ModalRoot(store);
+
 const Root = () => {
   return (
     <div>
       <Provider store={store}>
         <App />
       </Provider>
-      <ModalRoot store={store} modalTypes={modalTypes} config={{ zIndex: 5 }} />
+      <ModalRootWithStore modalTypes={modalTypes} config={{ zIndex: 5 }} />
     </div>
   );
 }

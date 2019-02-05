@@ -4,7 +4,7 @@ import Button from './button';
 import { actions } from 'react-redux-modals';
 import './app.css';
 
-class App extends Component {
+export class App extends Component {
 
   constructor(props) {
     super(props);
