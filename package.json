@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run clean && webpack -p",
     "clean": "rimraf dist",
+    "deploy": "gh-pages -d example/build",
     "predeploy": "cd example && npm install && npm run build",
     "prepublishOnly": "npm test && npm run build",
     "start": "webpack --watch --mode=development",
@@ -41,6 +42,7 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.8.0",
     "enzyme-to-json": "^3.3.5",
+    "gh-pages": "^2.0.1",
     "jest": "^24.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
