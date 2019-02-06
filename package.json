@@ -1,6 +1,6 @@
 {
   "name": "react-redux-modals",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple component-based modals that support auto-layering.",
   "main": "dist/index.js",
   "scripts": {
