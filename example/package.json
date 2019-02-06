@@ -35,8 +35,15 @@
     "redux-mock-store": "^1.5.3"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "/__tests__/setup.js", "/__tests__/helpers/"],
-    "testMatch": ["***/__tests__/**/*.js?(x)", "**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/setup.js",
+      "/__tests__/helpers/"
+    ],
+    "testMatch": [
+      "***/__tests__/**/*.js?(x)",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup.js"
   }
 }
