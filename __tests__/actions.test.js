@@ -14,9 +14,11 @@ describe('actions', () => {
 
   describe('show modal', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(actions.showModal('MODAL_TEST', {
-        onSubmit: (data) => data
-      }));
+      store.dispatch(
+        actions.showModal('MODAL_TEST', {
+          onSubmit: data => data,
+        }),
+      );
       expect(store.getActions()).toMatchSnapshot();
     });
   });
@@ -34,5 +36,4 @@ describe('actions', () => {
       expect(store.getActions()).toMatchSnapshot();
     });
   });
-
 });

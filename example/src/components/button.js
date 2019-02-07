@@ -1,5 +1,5 @@
 import React from 'react';
-import styled  from 'styled-components';
+import styled from 'styled-components';
 
 const BaseButton = styled.button`
   display: inline-block;
@@ -8,11 +8,11 @@ const BaseButton = styled.button`
   margin: 0 5px;
   text-align: center;
   border-radius: 4px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
   color: rgba(0, 0, 0, 0.87);
   text-transform: uppercase;
   background: transparent;
@@ -22,7 +22,7 @@ const BaseButton = styled.button`
   user-select: none;
 
   &:hover {
-    background: rgba(0, 0, 0, .1);
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -40,15 +40,12 @@ const buttonStyles = {
   blue: BlueButton,
 };
 
-const Button = (props) => {
-
-  const { componentStyle='default', onClick } = props;
+const Button = props => {
+  const { componentStyle = 'default', onClick } = props;
 
   const ButtonStyle = buttonStyles[componentStyle] || buttonStyles.default;
 
-  return (
-    <ButtonStyle onClick={onClick}>{props.children}</ButtonStyle>
-  );
-}
+  return <ButtonStyle onClick={onClick}>{props.children}</ButtonStyle>;
+};
 
 export default Button;

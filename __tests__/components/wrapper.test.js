@@ -1,10 +1,9 @@
 import React from 'react';
-import Modal from '../../src';
 import { shallow } from 'enzyme';
+import Modal from '../../src';
 
 describe('modal wrapper', () => {
   test('renders the component with props', () => {
-
     const config = { level: 1, zIndex: 5 };
     const component = shallow(<Modal config={config} />);
 

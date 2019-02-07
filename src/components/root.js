@@ -3,28 +3,22 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import ModalFactory from './factory';
 
-export default (store) => {
-
+export default store => {
   if (!store) {
     throw Error('Redux store must be passed as an argument to ModalRoot.');
   }
 
   class ModalRoot extends Component {
-
-    constructor(props) {
-      super(props);
-    }
-
     componentDidMount() {
       this.modalTarget = document.createElement('div');
       this.modalTarget.className = 'full-modal modal';
-      this.modalTarget.setAttribute('data-testid','modal-root');
+      this.modalTarget.setAttribute('data-testid', 'modal-root');
       document.body.appendChild(this.modalTarget);
-      this._render();
+      this.documentRender();
     }
 
     componentWillUpdate() {
-      this._render();
+      this.documentRender();
     }
 
     componentWillUnmount() {
@@ -32,12 +26,16 @@ export default (store) => {
       document.body.removeChild(this.modalTarget);
     }
 
-    _render() {
+    documentRender() {
       ReactDOM.render(
         <Provider store={store}>
-          <ModalFactory id="modal-factory" modalTypes={this.props.modalTypes} config={this.props.config} />
+          <ModalFactory
+            id="modal-factory"
+            modalComponents={this.props.modalComponents}
+            config={this.props.config}
+          />
         </Provider>,
-        this.modalTarget
+        this.modalTarget,
       );
     }
 
@@ -47,5 +45,4 @@ export default (store) => {
   }
 
   return ModalRoot;
-
-}
+};

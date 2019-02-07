@@ -2,33 +2,38 @@ import { SHOW, HIDE, RESET } from './action_types';
 
 const initialState = {
   activeModals: [],
-  currentLevel: 1
+  currentLevel: 1,
 };
 
 export default (state = initialState, action) => {
-  
   switch (action.type) {
-    
     case SHOW:
       return {
         ...state,
         activeModals: [
-          ...state.activeModals.filter(modal => modal.modalType !== action.payload.modalType),
+          ...state.activeModals.filter(
+            modal => modal.modalType !== action.payload.modalType,
+          ),
           {
             ...action.payload,
-            level: state.currentLevel + 2
-          }
+            level: state.currentLevel + 2,
+          },
         ],
-        currentLevel: state.currentLevel + 2
+        currentLevel: state.currentLevel + 2,
       };
 
     case HIDE:
       return {
         ...state,
-        activeModals: state.activeModals.filter(modal => modal.modalType !== action.payload),
-        currentLevel: (state.activeModals.filter(modal => modal.modalType !== action.payload).length > 0 
-          ? state.currentLevel : 1)
-      }
+        activeModals: state.activeModals.filter(
+          modal => modal.modalType !== action.payload,
+        ),
+        currentLevel:
+          state.activeModals.filter(modal => modal.modalType !== action.payload)
+            .length > 0
+            ? state.currentLevel
+            : 1,
+      };
 
     case RESET:
       return initialState;
@@ -36,4 +41,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

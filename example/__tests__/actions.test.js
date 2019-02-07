@@ -21,9 +21,11 @@ describe('actions', () => {
 
   describe('modalProps', () => {
     test('Dispatches the correct action and payload', () => {
-      store.dispatch(actions.showModal('MODAL_PROPS', {
-        onSubmit: (data) => data
-      }));
+      store.dispatch(
+        actions.showModal('MODAL_PROPS', {
+          onSubmit: data => data,
+        }),
+      );
       expect(store.getActions()).toMatchSnapshot();
     });
   });

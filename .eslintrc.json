@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "no-console": 0,
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.object.name='console'][callee.property.name=/^(log|warn|info|trace)$/]",
+        "message": "Unexpected console statement"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "tabWidth": 2,
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ],
+    "react/destructuring-assignment": [0],
+    "react/prop-types": [0]
+  },
+  "globals": {
+    "document": false,
+    "window": false
+  }
+}

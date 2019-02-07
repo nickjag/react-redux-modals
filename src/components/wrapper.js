@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { keyframes }  from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const modalFadeIn = keyframes`
   from {opacity: 0;}
@@ -13,10 +13,11 @@ const AnimatedFixed = styled.div`
   bottom: 0;
   left: 0;
   z-index: ${props => props.zIndex};
-  opacity: ${props => props.animate && props.fadeIn ? 0 : 1};
-  animation-name: ${props => props.animate && props.fadeIn ? modalFadeIn : "none"};
-  animation-duration: .3s;
-  animation-timing-function: cubic-bezier(.8, -0.49, .36, 1);
+  opacity: ${props => (props.animate && props.fadeIn ? 0 : 1)};
+  animation-name: ${props =>
+    props.animate && props.fadeIn ? modalFadeIn : 'none'};
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.8, -0.49, 0.36, 1);
   animation-fill-mode: forwards;
   animation-delay: 0s;
 `;
@@ -24,7 +25,7 @@ const AnimatedFixed = styled.div`
 const Overlay = styled(AnimatedFixed)`
   height: 100%;
   width: 100%;
-  background-color: rgba(68, 68, 68, .8);
+  background-color: rgba(68, 68, 68, 0.8);
 `;
 
 const Wrapper = styled(AnimatedFixed)`
@@ -32,7 +33,7 @@ const Wrapper = styled(AnimatedFixed)`
   text-align: center;
   overflow-scrolling: touch;
   padding: 0;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 `;
 
 const Container = styled.div`
@@ -52,55 +53,63 @@ const Container = styled.div`
 
 export default class Modal extends Component {
   constructor(props) {
-
     super(props);
     this.onWrapperClick = this.onWrapperClick.bind(this);
     this.listenKeyboard = this.listenKeyboard.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.handleEscape) {
+      window.addEventListener('keydown', this.listenKeyboard, true);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.handleEscape) {
+      window.removeEventListener('keydown', this.listenKeyboard, true);
+    }
+  }
+
+  onWrapperClick() {
+    if (this.props.handleEscape) {
+      this.props.handleEscape();
+    }
   }
 
   listenKeyboard(event) {
     if (event.key === 'Escape' || event.keyCode === 27) {
       this.props.handleEscape();
     }
-  };
-
-  componentDidMount () {
-    if (this.props.handleEscape) {
-      window.addEventListener('keydown', this.listenKeyboard, true);
-    }
-  }
-  
-  componentWillUnmount () {
-    if (this.props.handleEscape) {
-      window.removeEventListener('keydown', this.listenKeyboard, true);
-    }
   }
 
-  onContainerClick(e) {
-    e.stopPropagation();
-  };
-  
-  onWrapperClick() {
-    if (this.props.handleEscape) {
-      this.props.handleEscape();
-    }
-  };
-
-  render () {
-
-    const { config, animate=false, fadeIn=true } = this.props;
+  render() {
+    const { config, animate = false, fadeIn = true } = this.props;
 
     const zIndex = config.zIndex || 1000;
 
     return (
-        <div>
-          <Wrapper className={`modal-wrapper ${animate && 'animate'}`} onClick={this.onWrapperClick} zIndex={parseInt(zIndex + config.level + 1)} animate={animate} fadeIn={fadeIn}>
-            <Container className="modal-container" onClick={this.onContainerClick}>
-              {this.props.children}
-            </Container>
-          </Wrapper>
-          <Overlay className={`modal-overlay ${animate && 'animate'}`} zIndex={parseInt(zIndex + config.level)} animate={animate} fadeIn={fadeIn} />
-        </div>
+      <div>
+        <Wrapper
+          className={`modal-wrapper ${animate && 'animate'}`}
+          onClick={this.onWrapperClick}
+          zIndex={parseInt(zIndex + config.level + 1, 10)}
+          animate={animate}
+          fadeIn={fadeIn}
+        >
+          <Container
+            className="modal-container"
+            onClick={e => e.stopPropagation()}
+          >
+            {this.props.children}
+          </Container>
+        </Wrapper>
+        <Overlay
+          className={`modal-overlay ${animate && 'animate'}`}
+          zIndex={parseInt(zIndex + config.level, 10)}
+          animate={animate}
+          fadeIn={fadeIn}
+        />
+      </div>
     );
   }
 }
