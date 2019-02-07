@@ -11,21 +11,20 @@
 - Custom z-indexing
 - Control over individual modal closing methods
 - Fade-in transition option
-------
 
 ## Install
 
 ```bash
 npm install --save react-redux-modals
 ```
-------
 
 ## Usage
 
 Check out the [demo](https://nickjag.github.io/react-redux-modals/) in the [example folder](https://github.com/nickjag/react-redux-modals/tree/master/example).
 
-#### 1. Call `ModalRoot` with your store and add the resulting component to your root component.
-#### 2. Pass in your modal components as a prop.
+**Step 1.** Call `ModalRoot` with your store and add the resulting component to your root component.
+
+**Step 2.** Pass in your modal components as a prop.
 
 
 ```jsx
@@ -58,7 +57,7 @@ export const MODAL_DELETE = Delete;
 export const MODAL_TERMS = Terms;
 ```
 
-#### 3. Add the modals reducer.
+**Step 3.** Add the modals reducer.
 
 ```jsx
 // ./reducers/index.js
@@ -70,7 +69,7 @@ export default combineReducers({
 });
 ```
 
-#### 4. Create your modal by using the `Modal` wrapper component. Add your own style.
+**Step 4.** Create your modal by using the `Modal` wrapper component. Add your own style.
 
 ```jsx
 // ./components/modals/delete.js
@@ -105,7 +104,7 @@ export default connect(
 
 ```
 
-#### 5. Call your modal (with optional props).
+**Step 5.** Call your modal (with optional props).
 
 ```jsx
 // ./components/files.js
@@ -138,7 +137,6 @@ export default connect(
 )(Files);
 
 ```
-------
 
 ## Components
 
@@ -162,6 +160,7 @@ Props:
 | `modalComponents` | object | Required | undefined | Pass a module of your exported modal components. |
 | `config` | object | Optional | undefined | Optionally pass a starting z-index. |
 
+
 Example of passing a starting z-index (defaults to `1000`).
 
 ```jsx
@@ -172,7 +171,6 @@ Example of passing a starting z-index (defaults to `1000`).
   config={{ zIndex: 5 }}
 />
 ```
-------
 
 ## Action Creators
 
@@ -181,7 +179,6 @@ Available action creators.
 - showModal(name, props)
 - hideModal(name)
 - resetModals()
-------
 
 ## License
 
