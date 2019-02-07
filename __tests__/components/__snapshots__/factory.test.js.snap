@@ -35,7 +35,7 @@ exports[`modal factory renders with children after action 1`] = `
   }
 >
   <Connect(ModalFactory)
-    modalTypes={
+    modalComponents={
       Object {
         "MODAL_TEST": [Function],
       }
@@ -53,7 +53,7 @@ exports[`modal factory renders with children after action 1`] = `
       }
       currentLevel={3}
       dispatch={[Function]}
-      modalTypes={
+      modalComponents={
         Object {
           "MODAL_TEST": [Function],
         }

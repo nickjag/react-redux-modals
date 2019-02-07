@@ -59,7 +59,7 @@ describe('modal factory', () => {
     const modalComponents = {
       MODAL_TEST: props => (
         <div>
-          <button onClick={props.onSubmit} />
+          <button onClick={props.onSubmit} type="button" />
         </div>
       ),
     };
