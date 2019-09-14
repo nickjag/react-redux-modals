@@ -1,7 +1,7 @@
 {
   "name": "react-redux-modals-examples",
   "homepage": "https://nickjag.github.io/react-redux-modals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
